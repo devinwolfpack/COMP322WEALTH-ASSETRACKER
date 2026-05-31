@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f6f8;
+  color: #222;
+}
+
+header {
+  background-color: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+main {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 15px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.summary p {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+li {
+  background-color: #e5e7eb;
+  padding: 12px;
+  margin-bottom: 10px;
+  list-style-type: none;
+  border-radius: 6px;
+}
+
+.delete-button {
+  float: right;
+  background-color: #dc2626;
+  padding: 6px 10px;
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+}
