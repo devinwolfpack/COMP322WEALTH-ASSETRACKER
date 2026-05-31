@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wealth Asset Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Wealth Asset Tracker</h1>
+    <p>Track your assets and calculate your total portfolio value.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add an Asset</h2>
+
+      <form id="assetForm">
+        <label for="assetName">Asset Name</label>
+        <input type="text" id="assetName" placeholder="Example: Savings Account" required>
+
+        <label for="assetCategory">Category</label>
+        <select id="assetCategory" required>
+          <option value="">Choose a category</option>
+          <option value="Cash">Cash</option>
+          <option value="Investments">Investments</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Vehicle">Vehicle</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="assetValue">Value</label>
+        <input type="number" id="assetValue" placeholder="Example: 1000" min="0" required>
+
+        <button type="submit">Add Asset</button>
+      </form>
+    </section>
+
+    <section class="card summary">
+      <h2>Total Portfolio Value</h2>
+      <p>$<span id="totalValue">0.00</span></p>
+    </section>
+
+    <section class="card">
+      <h2>Your Assets</h2>
+      <ul id="assetList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>COMP 322 Milestone 1</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
