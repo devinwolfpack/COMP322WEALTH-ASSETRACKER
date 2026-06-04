@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- lets the browser know that this file uses HTML5-->
+<html lang="en">
+  <!--starts the html doc and sets the page language to english-->
+<head>
+  <!--the head contains info about the webpage-->
+  <meta charset="UTF-8">
+  <!--sets the character encoding so the page can display normal text -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--makes the webpage scale correctly on phones,tablets and computers-->
+  <title>Wealth Asset Tracker</title>
+  <!--sets the title shown in the browser tab-->
+  <link rel="stylesheet" href="style.css">
+  <!--connects this html file to the external CSS file for styling-->
+</head>
+<body>
+  <!-- the body contains everything visible on the webpage-->
+  <header>
+    <!--header section at the top of the page-->
+    <h1>Wealth Asset Tracker</h1>
+     <!-- Main title of the webpage -->
+    <p>Track your assets and calculate your total portfolio value.</p>
+        <!-- Short description explaining what the app does -->
+  </header>
+
+  <main>
+     <!-- Main content area of the webpage -->
+    <section class="card">
+      <!-- A card section that contains the form for adding a new asset -->
+      <h2>Add an Asset</h2>
+         <!-- Section heading -->
+
+      <form id="assetForm">
+         <!-- Form where the user enters asset information and
+             the id is used by JavaScript to find and handle this form -->
+        <label for="assetName">Asset Name</label>
+         <!-- Label for the asset name input box -->
+        <input type="text" id="assetName" placeholder="Example: Savings Account" required>
+             <!-- Text input where the user types the asset name and
+            the required attribute means the user must fill this in before submitting -->
+
+        <label for="assetCategory">Category</label>
+              <!-- Label for the category dropdown menu -->
+        <select id="assetCategory" required>
+              <!-- Dropdown menu where the user selects the type of asset -->
+          <option value="">Choose a category</option>
+           <!-- Default option shown before the user chooses a category -->
+          <option value="Cash">Cash</option>
+            <!-- Category option for cash assets -->
+          <option value="Investments">Investments</option>
+           <!-- Category option for investment assets -->
+          <option value="Real Estate">Real Estate</option>
+          <!-- Category option for real estate assets -->
+          <option value="Vehicle">Vehicle</option>
+          <!-- Category option for vehicle assets -->
+          <option value="Other">Other</option>
+          <!-- Category option for any asset that does not fit the other options -->
+        </select>
+
+        <label for="assetValue">Value</label>
+           <!-- Label for the asset value input box -->
+        <input type="number" id="assetValue" placeholder="Example: 1000" min="0" required>
+                <!-- Number input where the user enters the asset's value
+                    min="0" prevents negative values.
+                    required means the user must enter a value before submitting -->
+
+        <button type="submit">Add Asset</button>
+        <!-- Button that submits the form and adds the asset -->
+      </form>
+    </section>
+
+    <section class="card summary">
+       <!-- Card section that displays the total value of all assets -->
+      <h2>Total Portfolio Value</h2>
+      <!-- Heading for the total portfolio value section -->
+      <p>$<span id="totalValue">0.00</span></p>
+          <!-- Displays the total value. 
+           JavaScript updates the span with id="totalValue" when assets are added -->
+    </section>
+
+    <section class="card">
+      <!-- Card section that displays the list of assets the user has added -->
+      <h2>Your Assets</h2>
+       <!-- Heading for the asset list section -->
+      <ul id="assetList"></ul>
+        <!-- Empty unordered list
+           JavaScript will add each new asset as a list item here -->
+    </section>
+  </main>
+
+  <footer>
+     <!-- Footer section at the bottom of the page -->
+    <p>COMP 322 Milestone 1</p>
+      <!-- Course/project label shown at the bottom of the webpage -->
+  </footer>
+
+  <script src="script.js"></script>
+    <!-- Connects this HTML file to the external JavaScript file
+       The JavaScript handles form submission, updates the asset list,
+       and calculates the total portfolio value. -->
+</body>
+</html>

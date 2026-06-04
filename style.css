@@ -1,0 +1,82 @@
+body { /* Styles the entire webpage body */
+  font-family: Arial, sans-serif;   /* Sets the font for all text on the page */
+  margin: 0;  /* Removes the default browser margin around the page */
+  background-color: #f4f6f8; /* Sets the light gray background color for the whole page */
+  color: #222; /* Sets the default text color */
+}
+
+header {
+/* Styles the top header section of the page */
+  background-color: #1f2937; /* Sets the header background to a dark gray color */
+  color: white;/* Makes the header text white */
+  text-align: center; /* Centers the header text */
+  padding: 30px 15px; /* Adds space inside the header: 30px top/bottom and 15px left/right */
+}
+
+main {/* Styles the main content area */
+  max-width: 900px;/* Limits the content width so it does not stretch too wide on large screens */
+  margin: 20px auto;/* Adds 20px top/bottom margin and centers the main area horizontally */
+  padding: 10px; /* Adds space inside the main content area */
+}
+
+.card {/* Styles each card section on the page */
+  background-color: white; /* Makes the card background white */
+  padding: 20px; /* Adds space inside each card */
+  margin-bottom: 20px;/* Adds space below each card */
+  border-radius: 8px;/* Rounds the corners of each card */
+}
+
+form {/* Styles the asset input form */
+  display: flex; /* Uses flexbox layout */
+  flex-direction: column;/* Stacks the form items vertically */
+}
+
+label {/* Styles all form labels */
+  margin-top: 10px;/* Adds space above each label */
+  font-weight: bold;/* Makes label text bold */
+}
+
+input,
+select,
+button {/* Styles all input boxes, dropdown menus, and buttons */
+  padding: 10px; /* Adds space inside each input, dropdown, and button */
+  margin-top: 5px;/* Adds space above each input, dropdown, and button */
+  font-size: 16px;/* Sets the text size */
+}
+
+button {/* Styles regular buttons */
+  margin-top: 15px;/* Adds extra space above buttons */
+  background-color: #2563eb;/* Sets the button background color to blue */
+  color: white;/* Makes the button text white */
+  border: none;/* Removes the default border */
+  cursor: pointer;/* Changes the mouse cursor to a pointer when hovering over the button */
+}
+
+button:hover {/* Styles buttons when the user moves the mouse over them */
+  background-color: #1d4ed8;/* Changes the button to a darker blue on hover */
+}
+
+.summary p {/* Styles the paragraph inside the total portfolio value section */
+  font-size: 28px;/* Makes the total value text larger */
+  font-weight: bold; /* Makes the total value bold */
+}
+
+li {/* Styles each asset item in the list */
+  background-color: #e5e7eb;/* Sets the background color for each asset item */
+  padding: 12px; /* Adds space inside each list item */
+  margin-bottom: 10px; /* Adds space below each list item */
+  list-style-type: none;/* Removes the default bullet point from the list item */
+  border-radius: 6px;/* Rounds the corners of each list item */
+}
+
+.delete-button {/* Styles the delete button beside each asset */
+  float: right;/* Moves the delete button to the right side of the list item */
+  background-color: #dc2626; /* Sets the delete button background color to red */
+  padding: 6px 10px;/* Makes the delete button smaller than the main form button */
+  margin-top: 0;/* Removes extra top spacing from the delete button */
+}
+
+footer {/* Styles the footer at the bottom of the page */
+  text-align: center; /* Centers the footer text */
+  padding: 15px;/* Adds space inside the footer */
+}
