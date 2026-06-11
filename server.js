@@ -10,7 +10,7 @@ let assets =[];
 app.use(express.json());
 
 app.use(function(req,res,next) {
-    console.log(reqmethod + " request to " + req.url);
+    console.log(req.method + " request to " + req.url);
     next();
 
 });
