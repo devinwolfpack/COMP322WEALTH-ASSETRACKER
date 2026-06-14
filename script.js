@@ -35,7 +35,7 @@ form.addEventListener("submit", function(event) {
 
   form.reset();// Clears the form fields so the user can enter another asset
 });
-
+  //gets all assets from the express server using the get route
   function getAssets() {
     fetch("/api/assets")
     .then(function(response) {
@@ -46,7 +46,7 @@ form.addEventListener("submit", function(event) {
       displayAssets();
     });
     }
-  
+    //sends a new asset to the express server using the post route
     function addAsset(asset) {
       fetch("/api/assets", {
         method: "POST",
@@ -62,7 +62,7 @@ form.addEventListener("submit", function(event) {
       getAssets();
     });
     }
-
+      //display all assets on the page and updates the total value
     function displayAssets() {
       assetList.innerHTML = "";
       let total = 0;
@@ -70,7 +70,7 @@ form.addEventListener("submit", function(event) {
       for (let i = 0; i<assets.length; i++) {
         total = total + assets[i].value;
         const listItem = document.createElement("li");
-        listItem.textContent = assets[i].name + " - " + assets[i].categpry +
+        listItem.textContent = assets[i].name + " - " + assets[i].category +
         " - $" + assets[i].value.toFixed(2);
         assetList.appendChild(listItem);
       
