@@ -1,5 +1,5 @@
-import { NextRespons, NextResponse} from "next/server";
-import { PrismaClient } from "@prisma/client/extension";
+import { NextResponse} from "next/server";
+import { PrismaClient } from "../../../../generated/prisma";
 import { PrismaPg} from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({
@@ -55,7 +55,7 @@ export async function PUT (
     }
     export async function DELETE(
         request: Request,
-        context: { params: Promsie<NextRespons{ id: string }> }
+        context: { params: Promise<{ id: string }> }
     ) {
         try{
             const params = await context.params;
