@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 
 type Asset = {
@@ -9,8 +10,8 @@ export default function Home() {
   const [category, setCategory] = useState("");
   const [value, setValue] = useState("");
   const [editingAssetId, setEditingAssetId] = useState<number | null>(null);
-  use useEffect(function() {
-    getAssetAsBlob();
+  useEffect(function() {
+    getAssets();
   }, []);
   function getAssets() {
     fetch("/api/assets")
@@ -65,15 +66,17 @@ export default function Home() {
         fetch("/api/assets/" + id, {
           method: "PUT",
           headers: {
-            "Content-Type : "application/json" 
-          })
+            "Content-Type": "application/json" 
+          },
+          body: JSON.stringify(asset)
+        })
           .then(function(response) {
             return response.json();
           })
           .then(function() {
             getAssets();
 
-          });
+          })
           }
           function deleteAsset(id: number) {
             fetch("/api/assets/" + id, {
@@ -136,7 +139,7 @@ export default function Home() {
                       {assets.map(function(asset) {
                         return (
                           <li key={asset.id}>
-                            {asset.name} - {asset.category} - ${asset.value.toFixed()}
+                            {asset.name} - {asset.category} - ${asset.value.toFixed(2)}
                             <button
                             type="button"
                             onClick={function() {
