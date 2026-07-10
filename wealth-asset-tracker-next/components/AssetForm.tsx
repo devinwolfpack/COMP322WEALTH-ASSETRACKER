@@ -4,7 +4,7 @@ type AssetFormProps = {
     value: string;
     editingAssetId: number | null;
     setName: (name: string) => void;
-    setCategory (name:string) =>void;
+    setCategory: (name:string) =>void;
     setValue: (value: string) => void;
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
