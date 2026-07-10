@@ -1,5 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+import AssetForm from "../components/AssetForm";
+import AssetList from "../components/AssetList";
+import PortfolioSummary from "../components/PortfolioSummary";
 
 type Asset = {
   id:number; name: string; category: string; value: number;
@@ -76,7 +79,7 @@ export default function Home() {
           .then(function() {
             getAssets();
 
-          })
+          });
           }
           function deleteAsset(id: number) {
             fetch("/api/assets/" + id, {
@@ -97,73 +100,23 @@ export default function Home() {
                     <h1>Wealth Asset Tracker</h1>
                     <p>Track your assets and total portfolio value.</p>
                   </header>
-                  <section>
-                    <h2>Add or Edit Asset</h2>
-                    <form onSubmit={handleSubmit}>
-                      <input
-                      type="text"
-                      placeholder="Asset name"
-                      value={name}
-                      onChange={function(event) {
-                        setName(event.target.value);
-                      }}
-                      />
-                      <input
-                      type="text"
-                      placeholder="Category"
-                      value={category}
-                      onChange={function(event) {
-                        setCategory(event.target.value);
-                      }}
-                      />
-                      <input
-                      type="number"
-                      placeholder="Value"
-                      value={value}
-                      onChange={function(event) {
-                        setValue(event.target.value);
-                      }}
-                      />
-                      <button type="submit">
-                        {editingAssetId ===null ? "Add Asset" : "Update Asset"}
-                      </button>
-                    </form>
-                  </section>
-                  <section>
-                    <h2>Total Portfolio Value</h2>
-                    <p>${totalValue.toFixed(2)}</p>
-                  </section>
-                  <section>
-                    <h2>Assets</h2>
-                    <ul>
-                      {assets.map(function(asset) {
-                        return (
-                          <li key={asset.id}>
-                            {asset.name} - {asset.category} - ${asset.value.toFixed(2)}
-                            <button
-                            type="button"
-                            onClick={function() {
-                              editAsset(asset);
-
-                            }}
-                            >
-                              Edit
-                            </button>
-                            <button
-                            type="button"
-                            onClick={function() {
-                              deleteAsset(asset.id);
-                            }}
-                            >
-                              Delete
-                            </button>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </section>
-                </main>
-              
+                  <AssetForm
+                  name={name}
+                  category={category}
+                  value={value}
+                  editingAssetId={editingAssetId}
+                  setName={setName}
+                  setCategory={setCategory}
+                  setValue={setValue}
+                  handleSubmit={handleSubmit}
+                  />
+                  <PortfolioSummary totalValue={totalValue} />
+                  <AssetList
+                  assets={assets}
+                  editAsset={editAsset}
+                  deleteAsset={deleteAsset}
+                  />
+                  </main>
               );
-            }
-       
+              }
+            
