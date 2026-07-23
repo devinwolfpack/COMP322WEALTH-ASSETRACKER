@@ -110,8 +110,21 @@ export default function Home() {
                 getAssets();
               });
               }
+              function getAssetValue(asset:Asset) {
+                const assetName = asset.name.trim().toLowerCase();
+                if((assetName=== "bitcoin" || assetName ==="btc") &&
+                bitcoinPrice !== null) {
+                  return asset.value * bitcoinPrice;
+                }
+                if( (assetName === "ethereum" || assetName === "eth") &&
+              ethereumPrice !== null) {
+                return asset.value * ethereumPrice;
+              }
+              return asset.value;
+                }
+              
               const totalValue = assets.reduce(function(total,asset) {
-                return total + asset.value;
+                return total + getAssetValue(asset);
               }, 0);
               return (
                 <main>
@@ -140,6 +153,8 @@ export default function Home() {
                   assets={assets}
                   editAsset={editAsset}
                   deleteAsset={deleteAsset}
+                  bitcoinPrice={bitcoinPrice}
+                  ethereumPrice={ethereumPrice}
                   />
                   </main>
               );
