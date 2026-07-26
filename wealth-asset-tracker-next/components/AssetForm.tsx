@@ -42,13 +42,13 @@ export default function AssetForm ({
                 }}
                 />
                 <label htmlFor="assetValue">
-                Dollar value or coin quantity
+                USD/Coin Amount
                 </label>
                 <input
                 id="assetValue"
                 type="number"
                 step="any"
-                placeholder="Dollar value or quantity"
+                placeholder="USD/Coin Amount"
                 value={value}
                 onChange={function(event){
                     setValue(event.target.value);
