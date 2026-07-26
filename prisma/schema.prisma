@@ -17,5 +17,7 @@ model Asset {
   name  String
   category String
   value Float
+  quantity Float?
+  symbol String?
   createdAt DateTime @default(now())
 }

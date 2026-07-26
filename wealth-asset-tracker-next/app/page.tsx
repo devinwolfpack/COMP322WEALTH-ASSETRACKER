@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AssetForm from "../components/AssetForm";
 import AssetList from "../components/AssetList";
 import PortfolioSummary from "../components/PortfolioSummary";
+import MarketData from "../components/MarketData";
 
 type Asset = {
   id:number; name: string; category: string; value: number;
@@ -13,8 +14,14 @@ export default function Home() {
   const [category, setCategory] = useState("");
   const [value, setValue] = useState("");
   const [editingAssetId, setEditingAssetId] = useState<number | null>(null);
+  const [bitcoinPrice, setBitcoinPrice] = useState<number | null>(null);
+  const [bitcoinChange, setBitcoinChange] = useState<number | null>(null);
+  const [ethereumPrice, setEthereumPrice] = useState<number | null>(null);
+  const [ethereumChange, setEthereumChange] = useState<number | null>(null);
+  
   useEffect(function() {
     getAssets();
+    getMarketData();
   }, []);
   function getAssets() {
     fetch("/api/assets")
@@ -23,6 +30,18 @@ export default function Home() {
     })
     .then(function(data) {
       setAssets(data);
+    });
+  }
+  function getMarketData() {
+    fetch("/api/market")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      setBitcoinPrice(data.bitcoin.usd);
+      setBitcoinChange(data.bitcoin.usd_24h_change);
+      setEthereumPrice(data.ethereum.usd);
+      setEthereumChange(data.ethereum.usd_24h_change);
     });
   }
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -91,8 +110,21 @@ export default function Home() {
                 getAssets();
               });
               }
+              function getAssetValue(asset:Asset) {
+                const assetName = asset.name.trim().toLowerCase();
+                if((assetName=== "bitcoin" || assetName ==="btc") &&
+                bitcoinPrice !== null) {
+                  return asset.value * bitcoinPrice;
+                }
+                if( (assetName === "ethereum" || assetName === "eth") &&
+              ethereumPrice !== null) {
+                return asset.value * ethereumPrice;
+              }
+              return asset.value;
+                }
+              
               const totalValue = assets.reduce(function(total,asset) {
-                return total + asset.value;
+                return total + getAssetValue(asset);
               }, 0);
               return (
                 <main>
@@ -111,10 +143,18 @@ export default function Home() {
                   handleSubmit={handleSubmit}
                   />
                   <PortfolioSummary totalValue={totalValue} />
+                  <MarketData
+                  bitcoinPrice={bitcoinPrice}
+                  bitcoinChange={bitcoinChange}
+                  ethereumPrice={ethereumPrice}
+                  ethereumChange={ethereumChange}
+                  />
                   <AssetList
                   assets={assets}
                   editAsset={editAsset}
                   deleteAsset={deleteAsset}
+                  bitcoinPrice={bitcoinPrice}
+                  ethereumPrice={ethereumPrice}
                   />
                   </main>
               );

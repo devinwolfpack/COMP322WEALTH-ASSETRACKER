@@ -21,6 +21,9 @@ export default function AssetForm ({
     return (
         <section>
             <h2>Add or Edit Asset</h2>
+            <p>For Bitcoin or Ethereum, enter the number of coins you own in the Value field.
+               For all other assets, enter the dollar value.
+            </p>
             <form onSubmit={handleSubmit}>
                 <input
                 type="text"
@@ -38,9 +41,14 @@ export default function AssetForm ({
                     setCategory(event.target.value);
                 }}
                 />
+                <label htmlFor="assetValue">
+                USD/Coin Amount
+                </label>
                 <input
+                id="assetValue"
                 type="number"
-                placeholder="Value"
+                step="any"
+                placeholder="USD/Coin Amount"
                 value={value}
                 onChange={function(event){
                     setValue(event.target.value);
